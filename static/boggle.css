@@ -1,0 +1,30 @@
+body {
+  background-color: aliceblue;
+  font-family: sans-serif;
+}
+
+td.letter {
+  border: 3px solid black;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 5px;
+  padding: 5px;
+  min-width: 30px;
+  background-color: rgb(250, 250, 200);
+}
+
+td.list {
+  padding-left: 50px;
+  vertical-align: top;
+}
+
+td.stats {
+  padding-left: 30px;
+  vertical-align: top;
+}
+
+input {
+  padding-left: 10px;
+}

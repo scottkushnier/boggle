@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href= "{{ url_for('static', filename='boggle.css') }}">
+  </head>
+  <body>
+    <h1>&nbsp;&nbsp;&nbsp;BOGGLE!</h1>
+    <table>
+      <tr>
+        <td>
+          <table>
+            {% for row in board %}
+            <tr>
+              {% for letter in row %}
+                {% if letter == 'Q' %}
+                  <td class="letter" style="font-size:135%">Qu</td>
+                {% else %}
+                  <td class="letter">{{ letter }}</td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </table>
+        </td>
+        <td class="list" id="wordlist">
+          <ol id="word-list-items">
+          </ol>
+        </td>
+        <td class="stats">
+          <table>
+            <tr>
+              <td class="stats">
+                <h2>Game: <span id="game-num"></span></h2>
+                <h2 id="score">Score: 0</h2>
+                <h2>High Score: <span id="high-score"></span></h2>
+                <h2 id="time-remaining">Time Remaining: <span id="time-left">60</span></h2>
+              </td>
+            </tr> 
+          </table>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <form id="word-submit">
+      <input type="text" autocomplete="off" name="word" id="word" placeholder="(enter word)"></input>
+      <button type="submit" id="submit">Submit</button>
+    </form>
+    
+    <p><em> <span id="msg"> 
+    </span> </em></p>
+    <br><br>
+    <form action="/boggle/" method="POST">
+      <button type="submit">New Game</button>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.js"></script>
+    <script src="{{ url_for('static', filename='boggle.js') }}" ></script>        
+  </body>
+</html>
