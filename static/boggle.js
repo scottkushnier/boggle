@@ -108,7 +108,7 @@ async function getGameStats() {
     "http://localhost:5000/boggle/get-game-stats/",
     {}
   );
-  console.log(res.data);
+  // console.log(res.data);
   return res.data;
 }
 
@@ -162,7 +162,7 @@ function startTimer(maxTime) {
 
 async function postGameStats() {
   stats = await getGameStats();
-  console.log(stats);
+  // console.log(stats);
   $("#game-num").text(stats["num_games"] + 1);
   $("#high-score").text(stats["high_score"]);
 }

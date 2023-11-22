@@ -16,8 +16,9 @@ def boggle_page():
   # set up session & store board
   if (not session.get('boggle_game')):
      session['boggle_game'] = {}
-  session['boggle_game']['board']= boggle_game.board
-  session.modified = True
+  game_copy = session['boggle_game']
+  game_copy['board']= boggle_game.board
+  session['boggle_game'] = game_copy
   return(render_template('boggle.html', board=boggle_game.board))
 
 @app.route('/boggle/check-word/', methods=['GET'])
@@ -26,6 +27,7 @@ def check_word():
    boggle_game = Boggle()
    boggle_game.board = session['boggle_game']['board']
    word = request.args.get('word').upper()
+   # print(boggle_game.board)
    check_valid = boggle_game.check_valid_word(boggle_game.board, word)
    return(check_valid)
 
@@ -46,6 +48,7 @@ def post_game_stats():
       session['boggle_game']['high_score'] = score
    num_games = session['boggle_game'].get('num_games', 0)
    num_games += 1
-   session['boggle_game']['num_games'] = num_games
-   session.modified = True
+   game_copy = session['boggle_game']
+   game_copy['num_games'] = num_games
+   session['boggle_game'] = game_copy
    return('ok')
